@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(top: 20, left: 20),
@@ -112,6 +113,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Spacer(),
+                    Transform.rotate(
+                      angle: 90 * 3.141516 / 180,
+                      child: Icon(
+                        Icons.airplanemode_active,
+                        color: Colors.red,
+                      ),
+                    ),
+                    Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(top: 20, right: 20),
                       child: Column(
@@ -132,18 +141,70 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontSize: 10),
                             textAlign: TextAlign.left,
                           ),
+                          Text(
+                            "Intl Airport",
+                            style: Theme.of(context).textTheme.body1.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 10),
+                            textAlign: TextAlign.left,
+                          ),
                         ],
                       ),
                     )
                   ],
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(8.0),
+              Padding(
+                padding: const EdgeInsets.only(right: 20, left: 20),
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.35,
+                                child: TextFormField(
+                                  decoration:
+                                      InputDecoration(labelText: 'Passenger'),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.35,
+                                child: TextFormField(
+                                  decoration:
+                                      InputDecoration(labelText: 'Date'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              PassengersInput("AD"),
+                              PassengersInput("CH"),
+                              PassengersInput("IN"),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.35,
+                        child: TextFormField(
+                          decoration: InputDecoration(labelText: 'Date'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -153,6 +214,48 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class PassengersInput extends StatelessWidget {
+  final String _title;
+
+  const PassengersInput(
+    this._title, {
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.5,
+      child: Row(
+        children: <Widget>[
+          new RawMaterialButton(
+            onPressed: () {},
+            child: Text(
+              _title,
+              style: Theme.of(context).textTheme.body1.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 13),
+            ),
+            shape: new CircleBorder(),
+            elevation: 0,
+            fillColor: Colors.blue[200],
+            padding: const EdgeInsets.all(10.0),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.10,
+            child: TextFormField(
+              keyboardType: TextInputType.number,
+              inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+              decoration: InputDecoration(),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
