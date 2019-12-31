@@ -1,16 +1,14 @@
-# flight_booking_app
+# Flight Booking App
 
-A new Flight Booking App
+This is a sample project just to play around with Flutter. The purpose of this project was to practice the building of columns and rows with Flutter. Don't expect the code to be pretty 😉.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+|                   Design                    |                 Actual App                  |
+|                  ---------                  |                  ---------                  |
+| ![Events App Design](./AppDesign.png) | ![Events App Mobile](./FlutterApp.png) |
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Credtis
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Design [Flight Booking App](https://www.uplabs.com/posts/flight-booking-app-8a8ae679-bbe8-45ff-b6b3-b4377be3ace1) by [Seyfeddine Beroual](https://www.uplabs.com/seyfdesigner)
